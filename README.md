@@ -1,88 +1,45 @@
-# CIS201: Web Application Development (Jan–Jun 2026)
+# Leave Management and Real-Time Availability (FFIMS Module F4.2)
 
-## 📖 Course Description
+## Overview
+The **Leave Management and Real-Time Availability** submodule is a critical component of the Fleet and Facilities Integrated Management System (FFIMS). It replaces Africa University’s manual, paper-based leave request system with a digital, mobile-responsive workflow. The module provides supervisors with live visibility into driver status to ensure the **5-in/5-out rotation** remains fully staffed and to manage sudden gaps caused by illness or emergencies.
 
-This course provides a deep dive into foundational web technologies and modern full-stack development. Using a **product-based learning** approach, the semester is dedicated to the iterative design, development, and deployment of a complete web-based software product.
+## Key Features
+*   **Digital Leave Workflow:** Enables drivers to submit leave applications (Personal, Medical, etc.) with automated routing to supervisors for approval or rejection via centralized cards.
+*   **Real-Time Availability Board:** A dynamic dashboard displaying every driver's current status: **On Duty, Standby, On Leave, Off Duty, or Unavailable**.
+*   **One-Tap Status Updates:** A simplified interface for drivers to update their status instantly, minimizing the need for manual phone calls.
+*   **Accrual and Balance Tracking:** Automatically tracks monthly leave accruals versus used days, providing transparency for both staff and HR.
+*   **WebSocket Notifications:** Uses real-time bidirectional communication to alert standby personnel immediately when a gap is detected in the roster.
+*   **Predictive Analytics:** Implements machine learning models to analyze historical patterns and predict potential future availability challenges.
 
-Instead of traditional exams, emphasis is placed on industry-style workflows, version control, and continuous assessment through milestones.
+## Technical Architecture
+*   **Frontend:** **React.js** with **Redux** for state management and **Material-UI** for responsive, mobile-first design.
+*   **Backend:** **Node.js** and **Express.js** handling API requests and business logic.
+*   **Real-Time Engine:** **Socket.io (WebSockets)** for instant availability updates across the system.
+*   **Database:** **PostgreSQL** with **Sequelize ORM** for relational data persistence.
+*   **AI/ML:** **Python (scikit-learn)** for predicting leave patterns and availability challenges.
 
----
+## Relational Database Design
+The module relies on the following relational tables:
+*   **Leave_Requests:** Stores dates, reasons, and status (Pending, Approved, Rejected).
+*   **Leave_Balances:** Tracks accrued and used days per employee.
+*   **RealTime_Availability:** Logs current worker status for the dashboard board.
+*   **Audit_Trail:** Tracks who made status changes or approvals for accountability.
 
-## 🎯 Learning Outcomes (COs)
+## UI/UX Standards
+*   **Mobile-First Design:** Optimized for drivers using smartphones on limited network conditions (low-bandwidth friendly).
+*   **Shared UI Components:** Strictly uses components from `src/components/ui/` such as **Cards, Badges, and Buttons** for design consistency.
+*   **Color-Coded Status:** Uses standard badges (e.g., Green for On Duty, Yellow for Standby, Red for Unavailable) to reduce cognitive load.
 
-By the end of this course, students will be able to:
+## Git Workflow Fundamentals
+Contributors must follow the team's standard version control process:
+1.  **Clone** the repository to your local machine.
+2.  **Pull** the latest changes from `origin master` before starting.
+3.  **Create a feature branch** for specific tasks (e.g., `git checkout -b feature-leave-validation`).
+4.  **Stage and Commit** changes with descriptive messages.
+5.  **Push** to GitHub and create a **Pull Request** for peer review before merging into the main branch.
 
-* **CO1:** Master Internet fundamentals (HTTP/HTTPS, domains, hosting).
-* **CO2/3:** Design responsive UIs using HTML5/CSS3 and add interactivity with JavaScript.
-* **CO4:** Utilize professional version control via Git & GitHub.
-* **CO5/6:** Build and consume RESTful APIs using Node.js and Express.js.
-* **CO7/8:** Implement security, testing, and deployment for a portfolio-ready product.
-
----
-
-## 🗓️ Course Roadmap & Milestones
-
-| Week | Topic | Project Activity |
-| --- | --- | --- |
-| **1** | Internet & Web Fundamentals | Tool setup & Project Orientation |
-| **2** | HTML5 & Forms | Initial UI Structure |
-| **3** | CSS3 & Responsive Design | Layout implementation |
-| **4-5** | JavaScript (Basics & Advanced) | Frontend logic & Interactivity |
-| **6** | Bootstrap | UI/UX Refinement |
-| **7** | Git & GitHub | Collaboration & Version Control |
-| **8** | APIs & JSON | Data Integration |
-| **9** | Node.js & Express | Backend Development |
-| **10-11** | Security & Testing | System Hardening & Debugging |
-| **12-14** | Deployment & Presentation | Final Polish & Demo |
-
----
-
-## 🛠️ Technology Requirements
-
-To follow along with this project, you need:
-
-* **Editor:** VS Code (or similar IDE)
-* **Runtime:** Node.js & npm
-* **Version Control:** Git
-* **Browser:** Modern browser (Chrome/Firefox) with DevTools
-
----
-
-## 📚 Resources
-
-### Essential Readings
-
-* 📘 *Eloquent JavaScript* – M. Haverbeke
-* 📗 *HTML & CSS* – J. Duckett
-* 📙 *Node.js Web Development* – D. Herron
-* 📕 *Pro Git* – S. Chacon
-
-### Online Learning
-
-* [MDN Web Docs](https://developer.mozilla.org/)
-* [The Odin Project](https://www.theodinproject.com/)
-* [freeCodeCamp](https://www.freecodecamp.org/)
-* [Net Ninja (YouTube)](https://www.youtube.com/c/TheNetNinja)
-
----
-
-## 🚀 Getting Started
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/your-username/CIS201_Web_Application_Development.git
-
-```
-
-
-2. **Initialize the project**
-```bash
-npm install
-
-```
-
-
-
----
-
-*This repository is maintained as part of the CIS201 Coursework (Jan-Jun 2026).*
+## Installation
+1.  Clone the repository.
+2.  Run `npm install` to load dependencies (including `socket.io-client` and `material-ui`).
+3.  Configure your environment variables in `.env` for PostgreSQL connectivity.
+4.  Launch the development server: `npm run dev`.
